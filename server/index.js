@@ -7,11 +7,8 @@ const express = require('express');
 // require package that service static front end files ./client/dist
 const path = require('path');
 
-// import dbConnection file
-const { dbConnect } = require('./dbConnection');
-
-// require DbFunctions file
-const { dummyData } = require('./dbFunctions');
+// require DbFunctions file so they can be used/tested
+require('./dbFunctions');
 
 // set the port number for the application server
 const port = 3000
@@ -28,8 +25,3 @@ app.use(express.static(frontEnd))
 // use express listen function to invoke server instance, set to PORT for requests
 app.listen(port, () => console.info(`http://localhost:${port}`))
 
-// invoke oracle connection function and creat schema
-dbConnect();
-
-//test db functions
-// dummyData();
