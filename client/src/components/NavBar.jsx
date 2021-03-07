@@ -51,7 +51,7 @@ const NavBar = () => {
         <Link to='/portfolio' className={classes.links}>
           <Button color='inherit'>Portfolio</Button>
         </Link>
-        <Link className={classes.links}>
+        <Link to='/login' className={classes.links}>
           <Button color='inherit'>Login</Button>
         </Link>
       </Toolbar>

@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import Splash from './Splash';
 import Portfolio from './Portfolio';
+import Login from './LogIn';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Switch>
           <Route component={Splash} path='/' exact />
           <Route path='/portfolio' component={Portfolio} />
+          <Route path='/login' component={Login} />
         </Switch>
         <Footer />
       </div>
