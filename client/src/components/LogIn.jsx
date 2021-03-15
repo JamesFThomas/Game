@@ -47,19 +47,27 @@ const LogIn = () => {
   const classes = useStyles();
 
   // set up component state using react useState hooks
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('your@email.com');
+  const [password, setPassword] = useState('password');
 
   // need onSubmit function
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    // prevent page refresh default form action
+    event.preventDefault();
     // can see the text values from input field need make call to back end with information
+    const { email, password } = event.target;
+
+    // create object containing user information
     const userCreds = {
       e_mail: email,
       pass_word: password,
     };
-    alert(
-      `These are the user creds => eMail:${userCreds.e_mail} pWord:${userCreds.pass_word}`
-    );
+
+    alert(`These are the user creds => eMail:${email} pWord:${password}`);
+
+    // reset form input fields
+    setEmail('your@email.com');
+    setPassword('password');
   };
 
   return (
@@ -71,10 +79,10 @@ const LogIn = () => {
           required
           id='outlined-required'
           label='Required'
-          defaultValue='Your@email.com'
           variant='outlined'
           name='email'
           type='email'
+          value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
@@ -82,10 +90,10 @@ const LogIn = () => {
           required
           id='outlined-required'
           label='Required'
-          defaultValue='Password'
           variant='outlined'
           name='password'
           type='password'
+          value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
         <Button variant='contained' type='submit' endIcon={<SendIcon />}>
